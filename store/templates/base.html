@@ -1,0 +1,75 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Mart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href={% static 'fonts\material-icon\css\material-design-iconic-font.min.css' %}>
+    <link rel="stylesheet" href={% static 'css\signup.css' %}>
+    <!-- <link rel="stylesheet" href={% static 'css\cart.css' %}> -->
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/#">
+                
+                <img src={% static 'images\shop.png' %} alt="Logo" width="35" height="45"
+                    class="d-inline-block align-text-top">
+                E-Mart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end nav-pills " id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item btn-group" role="group">
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Info
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">AboutUs</a></li>
+                            <li><a class="dropdown-item" href="#">ContactUs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item btn-group" role="group">
+                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Profile
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/cart">Cart<span class="badge badge-info">{{request.session.cart.keys|length}}</span></a></li>
+                            {% if request.session.customer %}
+                            <li><a class="dropdown-item" href="/ordered">Orders</a></li>
+                            <li><a class="dropdown-item" href="/logout">LogOut</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="/login">Login</a></li>
+                            <li><a class="dropdown-item" href="/signup">SignUp</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Content  -->
+    {% block content %}
+    {% endblock %}
+    <!-- content End -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+<script src={% static 'jquery\jquery.min.js' %}></script>
+<script src={% static 'js\signup.js' %}></script>
+</body>
+
+</html>

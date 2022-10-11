@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+<!-- SignIn Page -->
+{% block content %}
+<div class="pb-5">
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src={% static 'images/signin-image.jpg' %} alt="sing up image"></figure>
+                    <a href="signup" class="signup-image-link">Create an account</a>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Sign In</h2>
+                    <form method="POST" class="register-form" id="login-form">
+                        {% csrf_token %}
+                        {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input required type="email" name="email" value="{{values.email}}" id="email"
+                                placeholder="Your Email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passw"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="passw" id="passw" placeholder="Password" />
+                        </div>
+                        <button class="btn form-submit" type="submit" name="signin" id="signin" value="Log in">Sign
+                            In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

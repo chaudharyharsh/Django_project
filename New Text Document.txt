@@ -1,0 +1,3 @@
+admin 
+id harsh
+pswd 1234
